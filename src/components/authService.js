@@ -1,4 +1,13 @@
-const API_BASE_URL = 'http://localhost:3001/api'; // Cambia al puerto correcto de tu backend
+const API_BASE_URL = 'http://localhost:3001/api';
+
+// Función para manejar errores de respuesta
+const handleResponse = async (response) => {
+    if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(errorMessage);
+    }
+    return response.json();
+};
 
 // Función de registro que llama al endpoint del controlador
 export const registerUser = async (userData) => {
@@ -7,13 +16,7 @@ export const registerUser = async (userData) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
     });
-
-    if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(errorMessage);
-    }
-
-    return response.json();
+    return handleResponse(response);
 };
 
 // Función de inicio de sesión que llama al endpoint del controlador
@@ -23,13 +26,7 @@ export const loginUser = async (credentials) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),
     });
-
-    if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(errorMessage);
-    }
-
-    return response.json();
+    return handleResponse(response);
 };
 
 // Crear una publicación
@@ -42,13 +39,7 @@ export const createPost = async (postData, token) => {
         },
         body: JSON.stringify(postData),
     });
-
-    if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(errorMessage);
-    }
-
-    return response.json();
+    return handleResponse(response);
 };
 
 // Dar like a una publicación
@@ -59,13 +50,7 @@ export const likePost = async (postId, token) => {
             'Authorization': `Bearer ${token}`,
         },
     });
-
-    if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(errorMessage);
-    }
-
-    return response.json();
+    return handleResponse(response);
 };
 
 // Obtener publicaciones
@@ -76,13 +61,7 @@ export const getPosts = async (token) => {
             'Authorization': `Bearer ${token}`,
         },
     });
-
-    if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(errorMessage);
-    }
-
-    return response.json();
+    return handleResponse(response);
 };
 
 // Agregar un comentario
@@ -93,15 +72,9 @@ export const addComment = async (postId, commentData, token) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify({ postId, content: commentData }),
+        body: JSON.stringify({ post: postId, content: commentData }), // Cambiado `postId` a `post`
     });
-
-    if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(errorMessage);
-    }
-
-    return response.json();
+    return handleResponse(response);
 };
 
 // Función para eliminar una publicación
@@ -112,11 +85,5 @@ export const deletePost = async (postId, token) => {
             'Authorization': `Bearer ${token}`,
         },
     });
-
-    if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(errorMessage);
-    }
-
-    return response.json();
+    return handleResponse(response);
 };

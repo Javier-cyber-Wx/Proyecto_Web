@@ -88,10 +88,9 @@ const PostsComponent = () => {
                             <h3 className="post-title">{post.title}</h3>
                             <span className="post-author">
                                 @{post.author && post.author.username ? post.author.username : "Usuario desconocido"}
-                            </span>
+                             </span>
                             <button onClick={() => handleDelete(post._id)} className="delete-button">🗑️</button>
                         </div>
-                        <img src={post.imageUrl} alt="Post" className="post-image" />
                         <p className="post-content">{post.content}</p>
                         <div className="post-actions">
                             <button onClick={() => handleLike(post._id)} className="like-button">👍</button>

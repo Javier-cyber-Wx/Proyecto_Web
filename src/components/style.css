@@ -345,3 +345,62 @@ h2 {
     background: #555; /* Color del "pulgar" al pasar el mouse */
 }
 
+/* Estiliza el contenedor principal */
+.create-post-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Evita el desbordamiento */
+}
+
+/* Estiliza los campos de entrada */
+.post-input,
+.post-textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.3s;
+    box-sizing: border-box; /* Asegura que el ancho incluya el padding y border */
+    resize: none; /* Desactiva el redimensionamiento del textarea */
+}
+
+.post-textarea {
+    overflow-y: auto; /* Agrega un scroll vertical si el contenido es demasiado grande */
+    max-height: 150px; /* Limita la altura máxima del textarea */
+}
+
+.post-input:focus,
+.post-textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Estiliza el botón */
+.create-post-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.create-post-button:hover {
+    background-color: #0056b3;
+}
+
+/* Agrega un poco de estilo adicional */
+.create-post-button:active {
+    transform: scale(0.98);
+}
