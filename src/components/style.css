@@ -239,30 +239,45 @@ button[type="submit"]:hover {
 }
 
 .comment-section {
-    margin-top: 10px;
     display: flex;
-    align-items: center; /* Alinear verticalmente */
+    flex-direction: column; /* Mantener la disposición vertical */
+    align-items: flex-start; /* Alineación de todos los elementos a la izquierda */
+    margin-top: 10px;
 }
-
 .comment-input {
-    flex: 1; /* Ocupa el espacio disponible */
+    flex: 1;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    margin-right: 10px; /* Espacio entre el input y el botón */
+    margin-bottom: 10px; /* Espacio debajo del campo de comentario */
+    width: 100%; /* Asegura que el campo de texto ocupe todo el ancho disponible */
+    max-width: 750px; /* Limita el ancho máximo para que no sea tan grande */
+    min-width: 200px;
 }
 
 .submit-comment-button {
-    background-color: #28a745; /* Color verde para el botón de enviar */
+    padding: 8px 12px;
+    background-color: #28a745;
     color: white;
     border: none;
-    border-radius: 5px;
-    padding: 8px 12px;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Asegura que el botón ocupe el mismo ancho que el campo de texto */
+}
+.submit-comment-button:hover {
+    background-color: #218838;
+}
+.comments-list {
+    margin-top: 10px;
 }
 
-.submit-comment-button:hover {
-    background-color: #218838; /* Color más oscuro al pasar el mouse */
+.comment {
+    margin-bottom: 8px; /* Espacio entre los comentarios */
+}
+
+.comment p {
+    margin: 0;
 }
 
 .no-posts {
@@ -271,7 +286,9 @@ button[type="submit"]:hover {
     color: #888;
 }
 
-
+.Titulo{
+    text-align: center;
+}
 
 .post-header {
     display: flex;
@@ -404,3 +421,4 @@ h2 {
 .create-post-button:active {
     transform: scale(0.98);
 }
+

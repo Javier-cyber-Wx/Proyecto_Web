@@ -87,3 +87,13 @@ export const deletePost = async (postId, token) => {
     });
     return handleResponse(response);
 };
+// Obtener comentarios de una publicación
+export const getComments = async (postId, token) => {
+    const response = await fetch(`${API_BASE_URL}/comments/${postId}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+    return handleResponse(response);
+};
